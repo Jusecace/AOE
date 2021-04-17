@@ -1,40 +1,38 @@
+#!/usr/bin/python
 
-#while True:
-while True:
-    try:
-        Comida = int(input ("Ingrese la cantidad de comida :"))
-        break
-    except ValueError:
-        print('Ooops! Esto no parece una cantidad valida de comida. Vuelva a intentar con valores numericos. (ejemplo: 1,2,3...)')
-
-print('Cantidad ingresada de comida:',Comida)
+import sys 
 
 while True:
-    try:
-        Aldeanos = int(input("Ingrese la cantidad de aldeanos :"))
-        break
-    except ValueError:
-        print('Ooops! Eso no es un valor valido de aldeanos. Intente de nuevo con valores numericos. (ejemplo: 1,2,3...)')
-
-print('Cantidad ingresada de aldeanos:',Aldeanos)
-
-
-def PasarDeEdadEnAOE2DE(Comida,Aldeanos):
+    try :
+        comida   = input("Ingrese la cantidad de Comida:") 
+        aldeanos = input("Ingrese la cantidad de Aldeanos:") 
+        # Evaluamos si los datos ingresados son enteros <int> y si son mayores a 0.
+        if ( int(comida) > 0 ) and  ( int(aldeanos) > 0 ) :
+            print('Cant. Comida: {}, Cant. Aldeanos: {}').format(comida, aldeanos)
+            break
+        else :
+            print('Se deben usar numeros enteros <int> positivos')
+    except IndexError:
+        print('Hay que ejecutar el programa con dos parametros') 
+    except ValueError: 
+        print(' Los dos parametros deben ser numeros enteros <int> mayores a cero (0)')
+    
+def PasarDeEdadEnAOE2DE(comida,aldeanos):
     """Esta funcion permite saber si pasamos bien de Edad o no.
     La funcion muestra que se pasa de Edad cuando hay minimo 500 de comida y entre 21 y 25 aldeanos
     """
     
-    if (Comida >= 500) and (Aldeanos >= 21) :
+    if (comida >= 500) and (aldeanos >= 21) :
         print('Es el momento de pasar de edad')
-    elif (Comida < 500) or (Aldeanos < 21) :
-        if (Comida < 500) :
+    elif (comida < 500) or (aldeanos < 21) :
+        if (comida < 500) :
             print('Necesita mas comida, a seguir produciendo granjas o a cazar venaditos.')
-        if (Aldeanos < 21 ) :
+        if (aldeanos < 21 ) :
             print('Nop, a seguir produciendo aldeanos.')
-        if (Comida < 500) and (Aldeanos > 25) :
-            print('Muchos Aldeanos. Deje de producir Aldeanos y solo recoja comida.')
+        if (comida < 500) and (aldeanos > 25) :
+            print('Muchos aldeanos. Deje de producir aldeanos y solo recoja comida.')
             
             
-PasarDeEdadEnAOE2DE(Comida,Aldeanos)
+PasarDeEdadEnAOE2DE(comida,aldeanos)
     
 
